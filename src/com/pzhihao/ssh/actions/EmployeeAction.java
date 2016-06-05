@@ -16,15 +16,37 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 
 	private EmployeeService employeeService;
 	
+	/**
+	 * employeeService的set方法
+	 * @param employeeService
+	 */
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
 	
 	public String list(){
 		request.put("employees",employeeService.getAll());
+		
+		
 		return "list";
 	}
 
+	/**
+	 * 
+	 * 获取页面回传的id
+	 */
+	private Integer id;
+	
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	public String delete(){
+		employeeService.delete(id);
+		return SUCCESS;
+	}
+	
+	
 	private Map<String, Object> request;
 	
 	@Override

@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>员工信息</title>
 </head>
 <body>
 	<h4>员工信息页面</h4>
-	<s:if test="#request.employees == null||request.employees.size() == 0">
+	<s:if test="%{#request.employees == null||#request.employees.size() == 0}">
 		没有任何员工信息
 	</s:if>
 	<s:else>
@@ -21,8 +21,10 @@
 				<td>BIRTH</td>
 				<td>CREATETIME</td>
 				<td>DEPT</td>
+				<td>DELETE</td>
 			</tr>
 			<s:iterator value="#request.employees">
+			
 				<tr>
 					<td>${id}</td>
 					<td>${lastName}</td>
@@ -30,6 +32,7 @@
 					<td>${birth}</td>
 					<td>${createTime}</td>
 					<td>${department.departmentName}</td>
+					<td><a href="emp-delete?id=${id}">删除</a></td>
 				</tr>
 			</s:iterator>
 		</table>

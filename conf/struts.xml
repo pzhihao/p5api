@@ -4,15 +4,16 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
 
     <package name="default" namespace="/" extends="struts-default">
 		
-		<!-- method="{1}" 凡是emp开头的action都会调用*方法 -->
+		<!-- method="{1}" 凡是emp开头的action都会调用*方法，class在applicationContext-beans中定义id -->
+		
 		<action name="emp-*" class="employeeAction" method="{1}">
 			<result name="list">/WEB-INF/views/emp-list.jsp</result>
+			<result name="success" type="redirect">/emp-list</result>
 		</action>
 		
     </package>

@@ -3,14 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<!-- 用到sessionFactory的都要配置bean -->
+
+<!-- dao的配置 -->
 <bean id="employeeDao" class="com.pzhihao.ssh.dao.EmployeeDao">
 	<property name="sessionFactory" ref="sessionFactory"></property>
 </bean>
 
+
+<!-- Service的配置 -->
 <bean id="employeeService" class="com.pzhihao.ssh.service.EmployeeService">
 	<property name="employeeDao" ref="employeeDao"></property>
 </bean>
 
+<!-- Action的配置 -->
 <bean id="employeeAction" class="com.pzhihao.ssh.actions.EmployeeAction" scope="prototype">
 	<property name="employeeService" ref="employeeService"></property>
 </bean>

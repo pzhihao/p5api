@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-123
+<a href="emp-list">显示所有员工</a>
 </body>
 </html>

@@ -6,6 +6,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>员工信息</title>
+<script type="text/javascript" src="<%=request.getContextPath()%>/scripts/jquery-1.12.4.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".delete").click(function(){
+			var lastName=$(this).next(":input").val();
+			var flag=confirm("你确定删除"+lastName+"的信息吗?");
+			var url=this.href;
+			var data={"time":new Date()};
+			if (flag) {
+				$.post(url,data,function(data){
+					
+				})
+			}
+			return false;
+		});
+		
+	});
+</script>
 </head>
 <body>
 	<h4>员工信息页面</h4>
@@ -32,9 +50,12 @@
 					<td>${birth}</td>
 					<td>${createTime}</td>
 					<td>${department.departmentName}</td>
-					<td><a href="emp-delete?id=${id}">删除</a></td>
+					<td><a href="emp-delete?id=${id}" class="delete">删除</a>
+						<input type="hidden" value="${lastName}">
+					</td>
 				</tr>
 			</s:iterator>
+			
 		</table>
 	</s:else>
 </body>

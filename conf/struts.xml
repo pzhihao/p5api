@@ -17,6 +17,16 @@
 		</action>
 		
     </package>
+    
+    
+    <package name="json" namespace="/" extends="struts-default,json-default">
+    	<action name="api-getall" class="employeeApiAction" method="getall">
+				<result type="json">
+					<param name="root">result</param>
+				</result>
+				
+		</action>
+    </package>
 
    
 

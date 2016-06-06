@@ -20,5 +20,8 @@
 <bean id="employeeAction" class="com.pzhihao.ssh.actions.EmployeeAction" scope="prototype">
 	<property name="employeeService" ref="employeeService"></property>
 </bean>
+<bean id="employeeApiAction" class="com.pzhihao.ssh.api.EmployeeApiAction" scope="prototype">
+	<property name="employeeService" ref="employeeService"></property>
+</bean>
 
 </beans>

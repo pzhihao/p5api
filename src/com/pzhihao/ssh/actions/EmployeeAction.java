@@ -1,5 +1,8 @@
 package com.pzhihao.ssh.actions;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.RequestAware;
@@ -41,9 +44,27 @@ public class EmployeeAction extends ActionSupport implements RequestAware{
 		this.id = id;
 	}
 	
+	
+	private InputStream inputStream;
+	
+	public InputStream getInputStream() {
+		return inputStream;
+	}
+	
+	
 	public String delete(){
 		employeeService.delete(id);
-		return SUCCESS;
+		try {
+			inputStream = new ByteArrayInputStream("1".getBytes("UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			try {
+				inputStream = new ByteArrayInputStream("0".getBytes("UTF-8"));
+			} catch (UnsupportedEncodingException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+		return "delete";
 	}
 	
 	

@@ -13,11 +13,18 @@
 			var lastName=$(this).next(":input").val();
 			var flag = confirm("确定要删除"+lastName+"的信息吗?");
 			if(flag){
+
+				var $tr=$(this).parent().parent();
 				//删除员工信息
 				var url =this.href;
 				var args={"time":new Date()};
 				$.post(url,args,function(data){
-					
+					if (data == "1") {
+						alert("删除成功");
+						$tr.remove();
+					} else {
+						alert("删除失败");
+					}
 				});
 			}
 			return false;
@@ -56,6 +63,7 @@
 					</td>
 				</tr>
 			</s:iterator>
+			
 		</table>
 	</s:else>
 </body>
